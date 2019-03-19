@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #include("../../assets/html/head.html")
+    <title>修改信息</title>
+</head>
+<body class="page-settings" data-controller-name="settings">
+#include("../../assets/html/header.html")
+
+<div id="main" class="main-container container">
+    <div class="row">
+        <div class="col-sm-2 col-md-offset-1 setting-menu">
+            <div class="card">
+                <ul class="nav nav-pills flex-column nav-stacked">
+                    <li class="nav-item" itemid="setting">
+                        <a class="nav-link active" href="javascript:void(0)">
+                            <i class='fa fa-user-circle'></i><span>基本信息</span></a></li>
+                    <li class="nav-item" itemid="profile"><a class="nav-link hide-ios" href="javascript:void(0)">
+                        <i class='fa fa-address-card'></i> <span>详细资料</span></a></li>
+                    <li class="nav-item" itemid="reward"><a class="nav-link hide-ios" href="javascript:void(0)">
+                        <i class='fa fa-qrcode'></i> <span>打赏</span></a></li>
+                    <li class="nav-item" itemid="account"><a class="nav-link hide-ios" href="javascript:void(0)"><i
+                        class='fa fa-gear'></i>
+                        <span>账户设置</span></a></li>
+                    <li class="nav-item" itemid="password"><a class="nav-link hide-ios" href="javascript:void(0)">
+                        <i class='fa fa-keyboard-o'></i> <span>登陆密码</span></a></li>
+                    <li class="nav-item" itemid="applications"><a class="nav-link hide-ios" href="javascript:void(0)">
+                        <i class='fa fa-cube'></i> <span>管理我的应用</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-md-10">
+            <!--基本信息部分-->
+            <div class="card card-right" id="setting">
+                <div class="card-body">
+                    <form class="edit_user" enctype="multipart/form-data" action="/setting"
+                          accept-charset="UTF-8" method="post">
+                        <input name="utf8" type="hidden" value="&#x2713;"/>
+                        <input type="hidden" name="_method" value="put"/>
+                        <input type="hidden" name="authenticity_token"
+                               value="5jprRAttIGSdHGE3GhzrVeO/hgUjDcPaAm+SNnwBiWmj8+ak0HhjIaII6L4578obMOD7r1bdX9al2q1l9PnjXg=="/>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="control-label">姓名</label>
+                                    <input style="width: 200px" class="form-control" placeholder="姓名" type="text"
+                                           value="captern" name="user[name]" id="user_name"/>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Email</label>
+                                    <input disabled="disabled" class="form-control" placeholder="Email" type="text"
+                                           value="captern@icloud.com" name="user[email]" id="user_email"/>
+                                </div>
+                                <div class="form-group form-check">
+                                    <label for="user_email_public" class="form-check-label">
+                                        <input name="user[email_public]" type="hidden" value="0"/><input
+                                        class="form-check-input" type="checkbox" value="1" name="user[email_public]"
+                                        id="user_email_public"/> 公开 Email
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="file" name="user[avatar]" id="user_avatar"/>
+                                    <div class="form-text">选择上传头像</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <textarea class="form-control" name="user[bio]" id="user_bio">一个技术菜鸡</textarea>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group avatar-preview" style="text-align: center;">
+                                    <img class="media-object avatar-96"
+                                         src="https://l.ruby-china.com/user/avatar/36660/c8e3a7.jpg!lg"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions hide-ios">
+                            <button type="submit" class="btn btn-primary" data-disable-with="正在保存">更新资料</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--详细资料-->
+            <div class="card card-right" id="profile">
+                <div class="card-body">
+                    <form class="edit_user" enctype="multipart/form-data" action="/setting"
+                          accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;"/><input
+                        type="hidden" name="_method" value="put"/><input type="hidden" name="authenticity_token"
+                                                                         value="u9gS1OW7K5mKNrHvFBwoUyCX9RlmhWRGCprYBfxbFbP+EZ80Pq5o3LUiOGY37wkd88iIsxNV+EqtL+dWdKN/hA=="/>
+
+                        <input type="hidden" name="by" value="profile"/>
+                        <div class="form-group">
+                            <label for="user_location">城市</label>
+                            <input class="form-control" style="width: 200px" type="text" value="上海"
+                                   name="user[location]" id="user_location"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_company">公司</label>
+                            <input class="form-control" style="width: 400px" type="text" value="captern"
+                                   name="user[company]" id="user_company"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_github">GitHub</label>
+                            <div class="input-group">
+                                <span class="input-group-prepend"><span
+                                    class="input-group-text">https://github.com/</span></span>
+                                <input class="form-control" type="text" value="captern" name="user[github]"
+                                       id="user_github"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_twitter">Twitter</label>
+                            <div class="input-group">
+                                <span class="input-group-prepend"><span
+                                    class="input-group-text">https://twitter.com/</span></span>
+                                <input class="form-control" type="text" value="" name="user[twitter]"
+                                       id="user_twitter"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_website">个人主页</label>
+                            <input type="url" class="form-control" placeholder="http://" value="" name="user[website]"
+                                   id="user_website"/>
+                        </div>
+
+                        <div class="form-group form-group-profile-field-alipay">
+                            <label for="user_profile_alipay">支付宝</label>
+                            <input class="form-control" type="text" value="" name="user[profiles][alipay]"
+                                   id="user_profile_alipay">
+
+                        </div>
+                        <div class="form-group form-group-profile-field-wechat">
+                            <label for="user_profile_wechat">微信</label>
+                            <input class="form-control" type="text" value="" name="user[profiles][wechat]"
+                                   id="user_profile_wechat">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_tagline">签名</label>
+                            <input class="form-control" type="text" value="让我们活的潇潇洒洒" name="user[tagline]"
+                                   id="user_tagline"/>
+                        </div>
+                        <div class="form-actions hide-ios">
+                            <button type="submit" class="btn btn-primary" data-disable-with="正在保存">更新资料</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--打赏部分-->
+            <div class="card card-right" id="reward">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <form class="edit_user" id="edit_user_36660" enctype="multipart/form-data" action="/setting"
+                                  accept-charset="UTF-8" method="post"><input name="utf8" type="hidden"
+                                                                              value="&#x2713;"/><input type="hidden"
+                                                                                                       name="_method"
+                                                                                                       value="put"/><input
+                                type="hidden" name="authenticity_token"
+                                value="e2+NSN4YBnuqD2PCg01BN2b5xrqtuwAEqKY0X3NCnoI+pgCoBQ1FPpUb6kugvmB5taa7ENhrnAgPEwsM+7r0tQ=="/>
+
+                                <input type="hidden" name="by" value="reward"/>
+
+                                <div class="form-group form-group-reward-field-alipay">
+                                    <label>支付宝</label>
+                                    <input class="form-control" type="file" name="user[rewards][alipay]"
+                                           id="user_reward_alipay">
+                                    <p class="form-text">
+                                        打开支付宝客户端：右上角 “+” -> 我要收款 -> 设定金额 -> 保存二维码图片
+                                    </p>
+                                </div>
+
+                                <div class="form-group form-group-reward-field-wechat">
+                                    <label>微信</label>
+                                    <input class="form-control" type="file" name="user[rewards][wechat]"
+                                           id="user_reward_wechat">
+                                    <p class="form-text">
+                                        打开微信手机客户端：右上角 “+” -> 收付款 -> 我要收款 -> 保存二维码图片
+                                    </p>
+                                </div>
+
+
+                                <div class="form-actions hide-ios">
+                                    <button type="submit" class="btn btn-primary" data-disable-with="正在保存">更新资料</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="markdown">
+                                <h3 id=":gift: 关于打赏">
+                                    <img title=":gift:" alt="🎁" src="https://twemoji.b0.upaiyun.com/2/svg/1f381.svg"
+                                         class="twemoji"> 关于打赏</h3>
+                                <p>打赏功能为了鼓励分享而设计。</p>
+
+                                <p>上传你的微信、支付宝 <strong>收款二维码</strong>，之后打赏按钮将会出现在 “个人主页” 和 “文章末尾” 显示。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--账户设置-->
+            <div class="card card-right" id="account">
+                <div class="card-body">
+                    <div class="heading">删除我的账号</div>
+
+                    <form action="/setting" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8"
+                                                                                                           type="hidden"
+                                                                                                           value="&#x2713;"/><input
+                        type="hidden" name="_method" value="delete"/><input type="hidden" name="authenticity_token"
+                                                                            value="+w4JL37cIM4gJWocCgmmwFJz6ZOzJgz1NRqXeQkjx6siRm/vrCPEjtPOiHzDrN80TZbkrNARAJpVw4jaW2607Q=="/>
+
+                        <input type="hidden" name="by" value="destroy"/>
+                        <div class="form-group">
+                            <p>当然不想使用这个账号的时候，可以选择删除账号。</p>
+                            <p>删除以后数据将会保留，以匿名的方式存在，你的账号将无法再登录。</p>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="要删除账号，请输入你的密码" type="password"
+                                   name="user[current_password]" id="user_current_password"/>
+                        </div>
+                        <input type="submit" name="commit" value="确定删除我的账号" class="btn btn-danger"
+                               data-disable-with="正在提交"/>
+                    </form>
+                    <div class="heading">绑定其他帐号用于登录</div>
+
+                    <ul class="list-group col-sm-6">
+                        <li class="list-group-item">
+                            GitHub
+                            <a rel="twitsy nofollow" title="点击解除绑定" data-method="delete" href="/setting/auth/github"><i
+                                class="fa fa-remove"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--密码设置-->
+            <div class="card card-right" id="password">
+                <div class="card-body">
+                    <form class="edit_user" id="asd" action="/setting" accept-charset="UTF-8" method="post">
+                        <input name="utf8" type="hidden" value="&#x2713;"/>
+                        <input type="hidden" name="_method" value="put"/><input type="hidden" name="authenticity_token"
+                                                                                value="Wo/pLxt8aEWOEq/82Vo+ze40ZGPT+OQohCyQQjuPjeMfRmTPwGkrALEGJnX6qR+DPWsZyaYoeCQjma8Rs3fn1A=="/>
+                        <input type="hidden" name="by" value="password"/>
+                        <div class="form-group">
+                            <label for="user_current_password">旧密码</label>
+                            <input class="form-control" type="text" name="user[current_password]"
+                                   id=""/>
+                        </div>
+                        <div class="form-group">
+                            <label for="user_password">密码</label>
+                            <input class="form-control" type="text" name="user[password]" id="user_password"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_password_confirmation">确认密码</label>
+                            <input class="form-control" type="text" name="user[password_confirmation]"
+                                   id="user_password_confirmation"/>
+                        </div>
+
+                        <div class="form-actions hide-ios">
+                            <input type="submit" name="commit" value="修改密码" class="btn btn-primary"
+                                   data-disable-with="正在保存"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--管理应用-->
+            <div class="card-right" id="applications">
+                <div class="card">
+                    <div class="card-header clearfix">
+                        管理的应用列表
+                        <a class="btn btn-success pull-right" href="/oauth/applications/new">注册新应用</a>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped table-condensed">
+                            <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>Client Id</th>
+                                <th>Level</th>
+                                <th>用户量</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header clearfix">
+                        已授权的应用
+                    </div>
+
+                    <div class="card-body">
+                        <p>下面列表是已经认证的应用，它们可以访问你的帐号。</p>
+                        <table class="table table-bordered table-striped table-condensed">
+                            <thead>
+                            <tr>
+                                <th>应用</th>
+                                <th>授权时间</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+#include("../../assets/html/footer.html")
+<div class="zoom-overlay"></div>
+</body>
+</html>

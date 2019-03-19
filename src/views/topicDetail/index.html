@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #include("../../assets/html/head.html")
+    <title>帖子详情</title>
+</head>
+<body class="page-topics" data-controller-name="topics">
+#include("../../assets/html/header.html")
+
+<div id="main" class="main-container container">
+    #include("../../assets/html/crumbs.html")
+    <div class="row">
+        <div class="col-md-12">
+            <div class="topic-detail card">
+                <div class="card-header media clearfix">
+                    <div class="media-body">
+                        <h1 class="media-heading">
+                            <a class="node" href="/topics/node12">数据库</a>
+                            <span class="title">It&#39;s never too late to learn Postgres</span>
+                        </h1>
+                        <div class="info">
+                            <a data-author="true" class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+                            <span class="hidden-mobile">
+      </span>
+                            ·
+                            <abbr class="timeago" title="2018-11-24T03:15:19+08:00">2018年11月24日</abbr>
+                            <span class="hidden-mobile">
+         ·
+        最后由 <a class="user-name" data-name="hooopo" href="/hooopo">hooopo</a> 回复于 <abbr class="timeago" title="2018-12-13T18:12:58+08:00">2018年12月13日</abbr>
+      </span>
+                            ·
+                            3399 次阅读
+                        </div>
+                    </div>
+                    <div class="avatar media-right">
+                        <a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a>
+                    </div>
+                </div>
+
+
+                <div class="label-awesome">
+                    <i class="fa fa-diamond awesome"></i> 本帖已被设为精华帖！
+                </div>
+
+                <div class="card-body markdown markdown-toc">
+
+
+                    <p>最近，<a href="https://www.timescale.com/">TimescaleDB</a>、<a href="https://www.pipelinedb.com/">PipelineDB</a>、<a href="https://www.citusdata.com/">CitusDB</a>相继都成为了postgres extension，并且都达到了production ready状态。这让Postgres在各个应用领域都有着难以替代的位置，无论是OLTP还是OLAP，无论什么样的应用场景。Postgres不仅仅是一个数据库，更是一个生态系统，其中包括SQL生态，extension生态，还有各种fork等。</p>
+                    <h2 id="Extension Ecosystem">Extension Ecosystem</h2>
+                    <ul>
+                        <li>流式系统：<a href="https://www.pipelinedb.com">Pipelinedb</a>，reporting dashboards and realtime monitoring 的最佳选择，出自Adroll，据说12306有在使用。</li>
+                        <li>并行处理：<a href="https://www.citusdata.com/">CitusDB</a>，让postgres不再有scale out烦恼，OLAP和OLTP双核模式，无论你是SaaS服务还是海量数据分析场景</li>
+                        <li>时序数据：<a href="https://www.timescale.com/">TimescaleDB</a>，时序分析</li>
+                        <li>空间数据：<a href="https://postgis.net/">Postgis</a> + <a href="https://pgrouting.org/">pgrouting</a>，LBS类应用和导航类应用杀手级解决方案</li>
+                        <li>数据科学：<a href="http://madlib.apache.org/">MADlib</a>，相当于Python 的 scikit-learn</li>
+                    </ul>
+
+                    <p>当然除了上面这些重量级的插件，postgres也有很多轻量级但超级好用的插件，比如：</p>
+
+                    <ul>
+                        <li>用于中文分词的zhparser和pg_jieba</li>
+                        <li>ETL的好帮手：各种FDW</li>
+                        <li>各种相似度算法包：fuzzystrmatch和pg_similarity</li>
+                        <li>让Postgres秒变列存储数据库的：cstore_fdw</li>
+                        <li>让Postgres秒变API接口的：postgrest（REST API）和hasura（graphql API）</li>
+                    </ul>
+                    <h2 id="SQL &amp; Data">SQL &amp; Data</h2>
+                    <p>如果说，做Web开发还可以使用ORM工具，不懂SQL语句也可以写出不错的项目。在数据分析挖掘领域，如果不懂SQL是很难的。SQL作为一个存在了几十年的工具，不断进化和完善，有着相当优秀的表达能力和社区沉淀。</p>
+
+                    <p>技术潮流像钟摆，从SQL到NoSQL，从NoSQL到NewSQL，甚至No, SQL！如今大数据工具也都倾向于使用SQL作为统一的接口层，像Spark SQL、Kalfka SQL、新版Elasticsearch 也支持了SQL。</p>
+
+                    <p>SQL之于数据领域就是Javascript之于Web。<a href="https://blog.codinghorror.com/the-principle-of-least-power/">Least Power原则</a>说：</p>
+
+                    <blockquote>
+                        <p>Any application that can be written in JavaScript, will eventually be written in JavaScript</p>
+                    </blockquote>
+
+                    <p>对于数据领域就是：</p>
+
+                    <blockquote>
+                        <p>Any application that can be written in SQL, will eventually be written in SQL</p>
+                    </blockquote>
+                    <h2 id="Postgres &amp; MySQL">Postgres &amp; MySQL</h2>
+                    <p>相比mysql，postgres的特性多的有点数不过来：LATERAL JOIN、Window Function、CTE、Materialized View、Array、FDW、Gist Gin Index等，更多请移步 <a href="https://modern-sql.com/">https://modern-sql.com/</a></p>
+
+                    <p>如果勉强还可以说postgres和mysql在OLTP领域分别是北乔峰，南慕容;然而在OLAP领域，mysql已经完全被postgres碾压。postgres凭借独特的extension架构，成为一个几乎没有短板的数据库。</p>
+                    <h2 id="Postgres forks &amp; variants">Postgres forks &amp; variants</h2>
+                    <ul>
+                        <li>
+                            <a href="https://greenplum.org/">Greenplum</a>，PB级并行分析数据库，BI工具，可以合MADlib一起做挖掘分析，最新版兼容postgresql 9.2</li>
+                        <li>Postgres-X2，pg cluster</li>
+                        <li>
+                            <a href="https://www.cockroachlabs.com/">Cockroachdb</a>，Autoscaling DB，TiDB的竞品，不过是兼容Postgres协议和语法</li>
+                        <li>Redshift，亚马逊的Cloud db，一般用于数据仓库，fork的fork，兼容postgresql 8.2语法</li>
+                    </ul>
+
+                    <p>更多：<a href="https://wiki.postgresql.org/wiki/PostgreSQL_derived_databases">https://wiki.postgresql.org/wiki/PostgreSQL_derived_databases</a></p>
+                    <h2 id="Learn Postgres">Learn Postgres</h2>
+                    <p>之前看到过一段话（并没有故意黑MongoDB）：</p>
+
+                    <blockquote>
+                        <p>刚入职场的年轻工程师如何判断他/她所要投资的技术是像2006年左右的 Rails、2007年左右的 Hadoop、还是更像2010年前后的 MongoDB？有点像投资创业公司，如何押对宝？还是尽量选择无聊的成熟的老技术、专注于解决实际问题、白猫黑猫抓到老鼠就是好猫？</p>
+                    </blockquote>
+
+                    <p>个人认为，Postgres应该是2019最值得投资的一项技能，没有之一。</p>
+
+
+                </div>
+
+                <div class="card-footer clearfix">
+                    <div class="opts">
+                        <a title="赞" data-count="57" data-state="deactive" data-type="Topic" data-id="37815" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>57 个赞</span></a>
+                        <a data-id="37815" class="follow" href="#"><i class="fa fa-eye"></i> 关注</a>
+                        <a title="收藏" class="bookmark " data-id="37815" href="#"><i class="fa fa-bookmark"></i> 收藏</a>
+
+                        <span class="pull-right opts">
+  </span>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div id="replies" class="card" data-last-floor="40">
+                <div class="total card-header hide-ios">
+                    共收到 <b>39</b> 条回复
+                </div>
+                <div class="items card-body">
+                    <div class="reply reply-system" data-id="348834" id="reply1">
+                        <div id="reply-348834" data-floor="1">
+                            <a title="jasl (Jasl)" href="/jasl"><img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/1107.jpg!xs" /></a> <a class="user-name" data-name="Jasl" href="/jasl">jasl</a>
+                            将本帖设为了精华贴
+
+                            <span class='time'>11月24日 04:49</span>
+
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348836" id="reply2">
+                        <div id="reply-348836" data-floor="2">
+                            <div class="avatar"><a title="coderliu (刘二狗)" href="/coderliu"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/23873.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="刘二狗" href="/coderliu">coderliu</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#2</span> ·
+            <a class="time" href="#reply-348836"><abbr class="timeago" title="2018-11-24T09:10:04+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="23873" title="修改回帖" href="/topics/37815/replies/348836/edit"></a>
+              <a data-id="348836" data-login="coderliu" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348836" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>炮神可以分享一下你的 PG 学习路线吗？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348837" id="reply3">
+                        <div id="reply-348837" data-floor="3">
+                            <div class="avatar"><a title="huobazi (武眉博＜活靶子.NET＞)" href="/huobazi"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/15.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="武眉博＜活靶子.NET＞" href="/huobazi">huobazi</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#3</span> ·
+            <a class="time" href="#reply-348837"><abbr class="timeago" title="2018-11-24T09:12:29+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="15" title="修改回帖" href="/topics/37815/replies/348837/edit"></a>
+              <a data-id="348837" data-login="huobazi" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348837" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>炮哥，这马上 9012 年了</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348838" id="reply4">
+                        <div id="reply-348838" data-floor="4">
+                            <div class="avatar"><a title="pathbox (Cary)" href="/pathbox"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/15420.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Cary" href="/pathbox">pathbox</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#4</span> ·
+            <a class="time" href="#reply-348838"><abbr class="timeago" title="2018-11-24T10:36:16+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="15420" title="修改回帖" href="/topics/37815/replies/348838/edit"></a>
+              <a data-id="348838" data-login="pathbox" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348838" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>初步使用中</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348839" id="reply5">
+                        <div id="reply-348839" data-floor="5">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#5</span> ·
+            <a class="time" href="#reply-348839"><abbr class="timeago" title="2018-11-24T12:49:46+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/348839/edit"></a>
+              <a data-id="348839" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348839" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="348837">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/348839/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/15.jpg!xs" /><span class="user-name">huobazi</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>那就2019咯</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348840" id="reply6">
+                        <div id="reply-348840" data-floor="6">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#6</span> ·
+            <a class="time" href="#reply-348840"><abbr class="timeago" title="2018-11-24T12:54:24+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/348840/edit"></a>
+              <a data-id="348840" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="1" data-state="deactive" data-type="Reply" data-id="348840" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>1 个赞</span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="348836">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/348840/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/23873.jpg!xs" /><span class="user-name">coderliu</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>用了快两年了吧，主要自己看看文档和相关领域专家的blog吧</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348843" id="reply7">
+                        <div id="reply-348843" data-floor="7">
+                            <div class="avatar"><a title="cao7113 (草色青青)" href="/cao7113"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/648.jpeg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="草色青青" href="/cao7113">cao7113</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#7</span> ·
+            <a class="time" href="#reply-348843"><abbr class="timeago" title="2018-11-24T17:09:55+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="648" title="修改回帖" href="/topics/37815/replies/348843/edit"></a>
+              <a data-id="348843" data-login="cao7113" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348843" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>分析很赞！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348848" id="reply8">
+                        <div id="reply-348848" data-floor="8">
+                            <div class="avatar"><a title="ksec" href="/ksec"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/7929.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="" href="/ksec">ksec</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#8</span> ·
+            <a class="time" href="#reply-348848"><abbr class="timeago" title="2018-11-24T18:25:21+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="7929" title="修改回帖" href="/topics/37815/replies/348848/edit"></a>
+              <a data-id="348848" data-login="ksec" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348848" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>还有 PG-Strom, "Postgres on GPU", 不过不知道是否 Production Ready.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348849" id="reply9">
+                        <div id="reply-348849" data-floor="9">
+                            <div class="avatar"><a title="cqcn1991 (子珂)" href="/cqcn1991"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/3873.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="子珂" href="/cqcn1991">cqcn1991</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#9</span> ·
+            <a class="time" href="#reply-348849"><abbr class="timeago" title="2018-11-24T19:13:09+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="3873" title="修改回帖" href="/topics/37815/replies/348849/edit"></a>
+              <a data-id="348849" data-login="cqcn1991" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348849" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>这是要用SQL写模型吗。。。。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348850" id="reply10">
+                        <div id="reply-348850" data-floor="10">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#10</span> ·
+            <a class="time" href="#reply-348850"><abbr class="timeago" title="2018-11-24T21:52:46+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/348850/edit"></a>
+              <a data-id="348850" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348850" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="348849">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/348850/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/3873.jpg!xs" /><span class="user-name">cqcn1991</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>不一定是sql写模型，可以plpython plr结合的，你可以参考下madlib的源码，但使用的时候少了导入导出和ETL部分，过滤的话sql本身就替代了pandas</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348851" id="reply11">
+                        <div id="reply-348851" data-floor="11">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#11</span> ·
+            <a class="time" href="#reply-348851"><abbr class="timeago" title="2018-11-24T21:54:51+08:00">2018年11月24日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/348851/edit"></a>
+              <a data-id="348851" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348851" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="348848">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/348851/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/7929.jpg!xs" /><span class="user-name">ksec</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>great <img title=":clap:" alt="👏" src="https://twemoji.b0.upaiyun.com/2/svg/1f44f.svg" class="twemoji"> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348854" id="reply12">
+                        <div id="reply-348854" data-floor="12">
+                            <div class="avatar"><a title="kran (kran)" href="/kran"><img class="media-object avatar-48" src="https://ruby-china.org/system/letter_avatars/2/K/155_206_95/96.png" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="kran" href="/kran">kran</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#12</span> ·
+            <a class="time" href="#reply-348854"><abbr class="timeago" title="2018-11-25T08:21:06+08:00">2018年11月25日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="1014" title="修改回帖" href="/topics/37815/replies/348854/edit"></a>
+              <a data-id="348854" data-login="kran" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348854" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>非常棒，最近看了一款图数据库，arangodb，也让人很喜欢，但还不成熟</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348856" id="reply13">
+                        <div id="reply-348856" data-floor="13">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#13</span> ·
+            <a class="time" href="#reply-348856"><abbr class="timeago" title="2018-11-25T14:35:51+08:00">2018年11月25日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/348856/edit"></a>
+              <a data-id="348856" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348856" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="348843">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/348856/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/648.jpeg!xs" /><span class="user-name">cao7113</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p><img title=":joy:" alt="😂" src="https://twemoji.b0.upaiyun.com/2/svg/1f602.svg" class="twemoji"> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348857" id="reply14">
+                        <div id="reply-348857" data-floor="14">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#14</span> ·
+            <a class="time" href="#reply-348857"><abbr class="timeago" title="2018-11-25T14:38:02+08:00">2018年11月25日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/348857/edit"></a>
+              <a data-id="348857" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348857" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="348854">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/348857/reply_to">
+                                            <img class="media-object avatar-16" src="https://ruby-china.org/system/letter_avatars/2/K/155_206_95/32.png" /><span class="user-name">kran</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>牛油果对标的应该是芒果吧，对自己发明一套查询语法的DB没好感，要学的太多，记不住...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348859" id="reply15">
+                        <div id="reply-348859" data-floor="15">
+                            <div class="avatar"><a title="ksec" href="/ksec"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/7929.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="" href="/ksec">ksec</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#15</span> ·
+            <a class="time" href="#reply-348859"><abbr class="timeago" title="2018-11-25T16:26:15+08:00">2018年11月25日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="7929" title="修改回帖" href="/topics/37815/replies/348859/edit"></a>
+              <a data-id="348859" data-login="ksec" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348859" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>所以我现在很期待 DO 推出的 Managed Postgres........ <img title=":heart_eyes:" alt="😍" src="https://twemoji.b0.upaiyun.com/2/svg/1f60d.svg" class="twemoji">
+                                        ( 不要太昂贵便好了 )</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348860" id="reply16">
+                        <div id="reply-348860" data-floor="16">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#16</span> ·
+            <a class="time" href="#reply-348860"><abbr class="timeago" title="2018-11-25T16:45:14+08:00">2018年11月25日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/348860/edit"></a>
+              <a data-id="348860" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348860" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="348859">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/348860/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/7929.jpg!xs" /><span class="user-name">ksec</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>Managed DB问题就是预装extension有限，这方面做的好的是阿里云RDS，预装extension非常全，可能和他们自己也在使用有关吧</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348867" id="reply17">
+                        <div id="reply-348867" data-floor="17">
+                            <div class="avatar"><a title="jdshi (简单师)" href="/jdshi"><img class="media-object avatar-48" src="https://ruby-china.org/system/letter_avatars/2/J/82_188_137/96.png" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="简单师" href="/jdshi">jdshi</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#17</span> ·
+            <a class="time" href="#reply-348867"><abbr class="timeago" title="2018-11-26T10:46:47+08:00">2018年11月26日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="27093" title="修改回帖" href="/topics/37815/replies/348867/edit"></a>
+              <a data-id="348867" data-login="jdshi" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348867" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>已入坑</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348882" id="reply18">
+                        <div id="reply-348882" data-floor="18">
+                            <div class="avatar"><a title="liprais" href="/liprais"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/254.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="" href="/liprais">liprais</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#18</span> ·
+            <a class="time" href="#reply-348882"><abbr class="timeago" title="2018-11-26T21:44:50+08:00">2018年11月26日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="254" title="修改回帖" href="/topics/37815/replies/348882/edit"></a>
+              <a data-id="348882" data-login="liprais" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348882" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>redshift 是 license 的 ParAcell 的 产品
+                                        不过现在 aws 自己也做了很多功能，挖了很多过去做 mpp 的人
+                                        <a href="https://www.quora.com/How-did-Amazon-decide-to-go-with-ParAccel-for-Redshift" rel="nofollow" target="_blank">https://www.quora.com/How-did-Amazon-decide-to-go-with-ParAccel-for-Redshift</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348884" id="reply19">
+                        <div id="reply-348884" data-floor="19">
+                            <div class="avatar"><a title="hfpp2012 (随风)" href="/hfpp2012"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/16154.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="随风" href="/hfpp2012">hfpp2012</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#19</span> ·
+            <a class="time" href="#reply-348884"><abbr class="timeago" title="2018-11-26T22:38:12+08:00">2018年11月26日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="16154" title="修改回帖" href="/topics/37815/replies/348884/edit"></a>
+              <a data-id="348884" data-login="hfpp2012" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348884" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>可以的</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348889" id="reply20">
+                        <div id="reply-348889" data-floor="20">
+                            <div class="avatar"><a title="griffinqiu (griffinqiu)" href="/griffinqiu"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/1821/f89e20.png!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="griffinqiu" href="/griffinqiu">griffinqiu</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#20</span> ·
+            <a class="time" href="#reply-348889"><abbr class="timeago" title="2018-11-27T09:51:31+08:00">2018年11月27日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="1821" title="修改回帖" href="/topics/37815/replies/348889/edit"></a>
+              <a data-id="348889" data-login="griffinqiu" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348889" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>"作为一个死宅，并不觉得定期TB是一种福利，看到招聘帖里有心里默默减1分，强调有美女减2分，期权减两分，SVN减5分，mongodb减5分"
+                                        就你皮</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348902" id="reply21">
+                        <div id="reply-348902" data-floor="21">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#21</span> ·
+            <a class="time" href="#reply-348902"><abbr class="timeago" title="2018-11-27T17:59:43+08:00">2018年11月27日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/348902/edit"></a>
+              <a data-id="348902" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348902" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="348882">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/348902/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/254.jpg!xs" /><span class="user-name">liprais</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>aws还有一个aurora看起来很厉害：<a href="https://aws.amazon.com/cn/rds/aurora/" rel="nofollow" target="_blank">https://aws.amazon.com/cn/rds/aurora/</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348905" id="reply22">
+                        <div id="reply-348905" data-floor="22">
+                            <div class="avatar"><a title="liprais" href="/liprais"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/254.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="" href="/liprais">liprais</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#22</span> ·
+            <a class="time" href="#reply-348905"><abbr class="timeago" title="2018-11-27T23:16:25+08:00">2018年11月27日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="254" title="修改回帖" href="/topics/37815/replies/348905/edit"></a>
+              <a data-id="348905" data-login="liprais" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348905" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="348902">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/348905/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/8.jpg!xs" /><span class="user-name">hooopo</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>我有几个前老板在做 aurora,是挺牛的</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="348911" id="reply23">
+                        <div id="reply-348911" data-floor="23">
+                            <div class="avatar"><a title="chunlea (Chunlea)" href="/chunlea"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/2653.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Chunlea" href="/chunlea">chunlea</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#23</span> ·
+            <a class="time" href="#reply-348911"><abbr class="timeago" title="2018-11-28T12:42:51+08:00">2018年11月28日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="2653" title="修改回帖" href="/topics/37815/replies/348911/edit"></a>
+              <a data-id="348911" data-login="chunlea" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="348911" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>期待《跟炮哥学 Postgres》！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349019" id="reply24">
+                        <div id="reply-349019" data-floor="24">
+                            <div class="avatar"><a title="lanzhiheng (蓝智恒)" href="/lanzhiheng"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/25043/744a59.png!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="蓝智恒" href="/lanzhiheng">lanzhiheng</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#24</span> ·
+            <a class="time" href="#reply-349019"><abbr class="timeago" title="2018-12-02T16:12:43+08:00">2018年12月02日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="25043" title="修改回帖" href="/topics/37815/replies/349019/edit"></a>
+              <a data-id="349019" data-login="lanzhiheng" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349019" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>虽然没怎么看过Postgres不过看着有点心动。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349062" id="reply25">
+                        <div id="reply-349062" data-floor="25">
+                            <div class="avatar"><a title="reus" href="/reus"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/942.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="" href="/reus">reus</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#25</span> ·
+            <a class="time" href="#reply-349062"><abbr class="timeago" title="2018-12-03T21:34:25+08:00">2018年12月03日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="942" title="修改回帖" href="/topics/37815/replies/349062/edit"></a>
+              <a data-id="349062" data-login="reus" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349062" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>十分好用</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349088" id="reply26">
+                        <div id="reply-349088" data-floor="26">
+                            <div class="avatar"><a title="ted (ted)" href="/ted"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/3347.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="ted" href="/ted">ted</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#26</span> ·
+            <a class="time" href="#reply-349088"><abbr class="timeago" title="2018-12-04T16:01:40+08:00">2018年12月04日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="3347" title="修改回帖" href="/topics/37815/replies/349088/edit"></a>
+              <a data-id="349088" data-login="ted" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349088" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>这本书知不道有看过的没？想了解下是否值得购买。
+                                        <a href="https://masteringpostgresql.com/" rel="nofollow" target="_blank">https://masteringpostgresql.com/</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349091" id="reply27">
+                        <div id="reply-349091" data-floor="27">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#27</span> ·
+            <a class="time" href="#reply-349091"><abbr class="timeago" title="2018-12-04T16:12:38+08:00">2018年12月04日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/349091/edit"></a>
+              <a data-id="349091" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349091" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349088">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349091/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/3347.jpg!xs" /><span class="user-name">ted</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>买过，看你想入门还是已经有经验了，有经验了的话不建议买。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349099" id="reply28">
+                        <div id="reply-349099" data-floor="28">
+                            <div class="avatar"><a title="ted (ted)" href="/ted"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/3347.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="ted" href="/ted">ted</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#28</span> ·
+            <a class="time" href="#reply-349099"><abbr class="timeago" title="2018-12-04T22:11:55+08:00">2018年12月04日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="3347" title="修改回帖" href="/topics/37815/replies/349099/edit"></a>
+              <a data-id="349099" data-login="ted" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349099" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349091">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349099/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/8.jpg!xs" /><span class="user-name">hooopo</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>我有很基础的SQL知识（平时大多都是写前端逻辑），就想好好学习下数据库，不需要太深入，希望侧重了解应用层面，譬如规划表结构、索引等的最佳实践，以开发出稳定高效的数据后台。不知道这本书合适不呢？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349103" id="reply29">
+                        <div id="reply-349103" data-floor="29">
+                            <div class="avatar"><a title="nouse (代码艺术家)" href="/nouse"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/775.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="代码艺术家" href="/nouse">nouse</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#29</span> ·
+            <a class="time" href="#reply-349103"><abbr class="timeago" title="2018-12-05T10:00:33+08:00">2018年12月05日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="775" title="修改回帖" href="/topics/37815/replies/349103/edit"></a>
+              <a data-id="349103" data-login="nouse" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349103" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349099">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349103/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/3347.jpg!xs" /><span class="user-name">ted</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>89美元很贵吗？买了自己看嘛</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349119" id="reply30">
+                        <div id="reply-349119" data-floor="30">
+                            <div class="avatar"><a title="ted (ted)" href="/ted"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/3347.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="ted" href="/ted">ted</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#30</span> ·
+            <a class="time" href="#reply-349119"><abbr class="timeago" title="2018-12-05T13:25:59+08:00">2018年12月05日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="3347" title="修改回帖" href="/topics/37815/replies/349119/edit"></a>
+              <a data-id="349119" data-login="ted" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349119" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349103">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349119/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/775.jpg!xs" /><span class="user-name">nouse</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>嗯，是有点贵。之前难道点错了，回复的你？</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349163" id="reply31">
+                        <div id="reply-349163" data-floor="31">
+                            <div class="avatar"><a title="juanito (Juanito Fatas)" href="/juanito"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/1510.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Juanito Fatas" href="/juanito">juanito</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#31</span> ·
+            <a class="time" href="#reply-349163"><abbr class="timeago" title="2018-12-07T09:05:44+08:00">2018年12月07日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="1510" title="修改回帖" href="/topics/37815/replies/349163/edit"></a>
+              <a data-id="349163" data-login="juanito" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="1" data-state="deactive" data-type="Reply" data-id="349163" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>1 个赞</span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>也可以關注一下 <a href="https://github.com/brandur/postgres-practices/blob/master/practices.md" rel="nofollow" target="_blank">https://github.com/brandur/postgres-practices/blob/master/practices.md</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply popular" data-id="349168" id="reply32">
+                        <div id="reply-349168" data-floor="32">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#32</span> ·
+            <a class="time" href="#reply-349168"><abbr class="timeago" title="2018-12-07T12:01:40+08:00">2018年12月07日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/349168/edit"></a>
+              <a data-id="349168" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="9" data-state="deactive" data-type="Reply" data-id="349168" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>9 个赞</span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349099">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349168/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/3347.jpg!xs" /><span class="user-name">ted</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>最近在写，一个大概的提纲：<img src="https://l.ruby-china.com/photo/2018/f8fc11f4-c6b3-48a9-8cb1-8544b9643a2e.png!large" title="" alt=""></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349169" id="reply33">
+                        <div id="reply-349169" data-floor="33">
+                            <div class="avatar"><a title="adamshen (adam.shen)" href="/adamshen"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/20859/a908ae.png!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="adam.shen" href="/adamshen">adamshen</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#33</span> ·
+            <a class="time" href="#reply-349169"><abbr class="timeago" title="2018-12-07T12:04:08+08:00">2018年12月07日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="20859" title="修改回帖" href="/topics/37815/replies/349169/edit"></a>
+              <a data-id="349169" data-login="adamshen" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349169" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349168">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349169/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/8.jpg!xs" /><span class="user-name">hooopo</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p><img title=":heart_eyes_cat:" alt="😻" src="https://twemoji.b0.upaiyun.com/2/svg/1f63b.svg" class="twemoji"> </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349184" id="reply34">
+                        <div id="reply-349184" data-floor="34">
+                            <div class="avatar"><a title="ceclinux-github (ceclinux)" href="/ceclinux-github"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/32084/43585f.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="ceclinux" href="/ceclinux-github">ceclinux-github</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#34</span> ·
+            <a class="time" href="#reply-349184"><abbr class="timeago" title="2018-12-07T17:37:55+08:00">2018年12月07日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="32084" title="修改回帖" href="/topics/37815/replies/349184/edit"></a>
+              <a data-id="349184" data-login="ceclinux-github" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349184" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349168">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349184/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/8.jpg!xs" /><span class="user-name">hooopo</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>期待文章，话说面了一圈回来，全是在用mysql，没公司用postgres的……</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349185" id="reply35">
+                        <div id="reply-349185" data-floor="35">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#35</span> ·
+            <a class="time" href="#reply-349185"><abbr class="timeago" title="2018-12-07T17:51:39+08:00">2018年12月07日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/349185/edit"></a>
+              <a data-id="349185" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="1" data-state="deactive" data-type="Reply" data-id="349185" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>1 个赞</span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349184">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349185/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/32084/43585f.jpg!xs" /><span class="user-name">ceclinux-github</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>MySQL是web 2.0时代的产物啊，LAMP标配，不过新项目的话，pg还是最佳选择。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349186" id="reply36">
+                        <div id="reply-349186" data-floor="36">
+                            <div class="avatar"><a title="jasl (Jasl)" href="/jasl"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/1107.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Jasl" href="/jasl">jasl</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#36</span> ·
+            <a class="time" href="#reply-349186"><abbr class="timeago" title="2018-12-07T17:54:18+08:00">2018年12月07日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="1107" title="修改回帖" href="/topics/37815/replies/349186/edit"></a>
+              <a data-id="349186" data-login="jasl" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349186" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>所以 PG + Rails 是 Web 2.5 吗 😂</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349218" id="reply37">
+                        <div id="reply-349218" data-floor="37">
+                            <div class="avatar"><a title="lidashuang (hello)" href="/lidashuang"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/122.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="hello" href="/lidashuang">lidashuang</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#37</span> ·
+            <a class="time" href="#reply-349218"><abbr class="timeago" title="2018-12-09T16:17:13+08:00">2018年12月09日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="122" title="修改回帖" href="/topics/37815/replies/349218/edit"></a>
+              <a data-id="349218" data-login="lidashuang" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349218" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>玩了下 hasura 感觉不错</p>
+
+                                    <p><img src="https://s3-ap-northeast-1.amazonaws.com/dropshare001/1544343318.png" title="" alt=""></p>
+
+                                    <p><img src="https://s3-ap-northeast-1.amazonaws.com/dropshare001/1544343326.png" title="" alt=""></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349219" id="reply38">
+                        <div id="reply-349219" data-floor="38">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#38</span> ·
+            <a class="time" href="#reply-349219"><abbr class="timeago" title="2018-12-09T16:18:32+08:00">2018年12月09日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/349219/edit"></a>
+              <a data-id="349219" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349219" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349218">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349219/reply_to">
+                                            <img class="media-object avatar-16" src="https://l.ruby-china.com/user/avatar/122.jpg!xs" /><span class="user-name">lidashuang</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>算BaaS了吧</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349286" id="reply39">
+                        <div id="reply-349286" data-floor="39">
+                            <div class="avatar"><a title="jiang_plus (jiang-plus)" href="/jiang_plus"><img class="media-object avatar-48" src="https://ruby-china.org/system/letter_avatars/2/J/82_188_137/96.png" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="jiang-plus" href="/jiang_plus">jiang_plus</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#39</span> ·
+            <a class="time" href="#reply-349286"><abbr class="timeago" title="2018-12-13T14:19:05+08:00">2018年12月13日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="4711" title="修改回帖" href="/topics/37815/replies/349286/edit"></a>
+              <a data-id="349286" data-login="jiang_plus" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="1" data-state="deactive" data-type="Reply" data-id="349286" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>1 个赞</span></a>
+          </span>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>另外推荐一下使用 google spanner 模型并兼容 pg 语法的 yugabyte 数据库：</p>
+
+                                    <p><a href="https://yugabyte.com" rel="nofollow" target="_blank">https://yugabyte.com</a></p>
+
+                                    <p>以及连接 pg 和 elasticsearch 的 zombodb：</p>
+
+                                    <p><a href="https://github.com/zombodb/zombodb" rel="nofollow" target="_blank">https://github.com/zombodb/zombodb</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349294" id="reply40">
+                        <div id="reply-349294" data-floor="40">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/8.jpg!md" /></a></div>
+                            <div class="infos">
+                                <div class="info">
+          <span class="name">
+            <a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+          </span>
+                                    <span class="sub-info">
+            <span class='floor'>#40</span> ·
+            <a class="time" href="#reply-349294"><abbr class="timeago" title="2018-12-13T18:12:58+08:00">2018年12月13日</abbr></a>
+          </span>
+                                    <span class="opts pull-right">
+              <span class="hideable">
+              <a class="edit fa fa-pencil" data-uid="8" title="修改回帖" href="/topics/37815/replies/349294/edit"></a>
+              <a data-id="349294" data-login="hooopo" title="回复此楼" class="btn-reply fa fa-mail-reply" href="#"></a>
+              </span>
+              <a title="赞" data-count="0" data-state="deactive" data-type="Reply" data-id="349294" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span></span></a>
+          </span>
+                                </div>
+                                <div class="reply-to-block" data-reply-to-id="349286">
+                                    <div class="info">
+                                        对
+                                        <a data-remote="true" href="/topics/37815/replies/349294/reply_to">
+                                            <img class="media-object avatar-16" src="https://ruby-china.org/system/letter_avatars/2/J/82_188_137/32.png" /><span class="user-name">jiang_plus</span>
+                                            <span class='reply-floor'></span>
+                                        </a>      回复
+                                    </div>
+                                </div>
+
+                                <div class="markdown">
+                                    <p>zombodb不错</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="reply" class="card">
+                <div class="card-header hide-ios">回帖</div>
+                <div class="card-body">
+                    <div id="editor">
+                        <p>This is the editor content.</p>
+                    </div>
+                    <!--<div class="editor-toolbar clearfix">
+                        <div class="reply-to pull-right" style="display:none;">
+                            <i class="fa fa-mail-reply" title="回复"></i>
+                            <a href="#" class="user"></a>
+                            <a href="#" class="close"><i class="fa fa-close"></i></a>
+                        </div>
+                        <div class="opts">
+                            <a href="#" class="nav-link pickup-emoji"><i class="fa fa-smile-o"></i></a>
+                            <span class="dropdown" id="dropdown-insert-codes">
+      <a href="#editor-toolbar-insert-code" class="nav-link dropdown-toggle" data-toggle="dropdown" title="插入代码"><i class="fa fa-code"></i></a>
+      <div class="dropdown-menu insert-codes" aria-labelledby="dropdown-insert-codes">
+        <a class="dropdown-item" data-lang="ruby" href="#">Ruby</a><a class="dropdown-item" data-lang="erb" href="#">HTML / ERB</a><a class="dropdown-item" data-lang="scss" href="#">CSS / SCSS</a><a class="dropdown-item" data-lang="js" href="#">JavaScript</a><a class="dropdown-item" data-lang="yml" href="#">YAML</i></a><a class="dropdown-item" data-lang="coffee" href="#">CoffeeScript</a><a class="dropdown-item" data-lang="conf" href="#">Nginx / Redis <i>(.conf)</i></a><a class="dropdown-item" data-lang="python" href="#">Python</a><a class="dropdown-item" data-lang="php" href="#">PHP</a><a class="dropdown-item" data-lang="java" href="#">Java</a><a class="dropdown-item" data-lang="erlang" href="#">Erlang</a><a class="dropdown-item" data-lang="shell" href="#">Shell / Bash</a>
+      </div>
+    </span>
+                            <a id="editor-upload-image" title="上传图片" class="nav-link" href="#"><i class='fa fa-image'></i> </a>
+                            <a href="#" class="nav-link preview">预览</a>
+                        </div>
+                    </div>
+                    <form id="new_reply" action="/topics/37815/replies" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="TkjiXeCeJQaYgEnUVAmrtvpCN4jBAcCSn58zHk6UyZyqN4LeYBsxOhi/8fI22jDIsQ1Ad7lL9I8IXKIoE7ymUg==" />
+
+                        <div class="form-group">
+    <textarea class="topic-editor form-control" rows="4" tabindex="1" name="reply[body]" id="reply_body">
+</textarea>
+                        </div>
+                        <input type="hidden" name="reply[reply_to_id]" id="reply_reply_to_id" />
+                        <div class="submit-buttons">
+                            <button type="submit" id="reply-button" class="btn btn-primary" tabindex="2", data-disable-with='提交回复'>提交回复</button>
+                            <span class="help-inline" style="padding-left: 5px;" title="或者 Ctrl + Enter"><kbd>Command</kbd> + <kbd>Enter</kbd></span>
+
+                            <div class="pull-right"><a href="/markdown" target="_blank">排版说明</a></div>
+                        </div>
+                    </form>-->
+                    <div class="card"></div>
+                    <div class="submit-buttons">
+                        <button type="submit" id="reply-button" class="btn btn-primary" tabindex="2", data-disable-with='提交回复'>提交回复</button>
+                        <!--<span class="help-inline" style="padding-left: 5px;" title="或者 Ctrl + Enter"><kbd>Command</kbd> + <kbd>Enter</kbd></span>-->
+                        <!--<div class="pull-right"><a href="/markdown" target="_blank">排版说明</a></div>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">相关话题</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="/topics/30023">Ruby ETL 工具漫谈</a></li>
+                    <li class="list-group-item"><a href="/topics/37192">Postgresql 插入一亿条数据，有快速的方法吗？</a></li>
+                    <li class="list-group-item"><a href="/topics/31640">[译] Rails 数据库最佳实践</a></li>
+                    <li class="list-group-item"><a href="/topics/32490">用 PHP 做项目都是用的 MySQL，现在转 Rails 有必要切到 PostgreSQL 派？</a></li>
+                    <li class="list-group-item"><a href="/topics/25116">Data Warehouse Schema Design</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!--<div class="sidebar hidden-mobile col-md-3">-->
+            <!--<div id="topic-sidebar" data-spy="affix" data-offset-bottom="65">-->
+                <!--<div class="card">-->
+                    <!--<div class="card-body">-->
+                        <!--<a href="#" class="btn btn-default btn-block btn-sm btn-move-page" data-type="top"><i class="fa fa-arrow-up"></i></a>-->
+                        <!--<div class="buttons">-->
+                            <!--<div class="group likes opts">-->
+                                <!--<a title="赞" data-count="57" data-state="deactive" data-type="Topic" data-id="37815" class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>57 个赞</span></a>-->
+                            <!--</div>-->
+                            <!--<div class="group">-->
+                                <!--<div class="btn-group" role="group">-->
+                                    <!--<a data-id="37815" class="follow btn btn-default" href="#"><i class="fa fa-eye"></i> 关注</a>-->
+                                    <!--<a title="收藏" class="bookmark  btn btn-default" data-id="37815" href="#"><i class="fa fa-bookmark"></i> 收藏</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<hr />-->
+                        <!--<div class="group">-->
+                            <!--<div class='social-share-button' data-title='It&#39;s never too late to learn Postgres' data-img=''-->
+                                 <!--data-url='' data-desc='' data-via=''>-->
+                                <!--<a rel="nofollow " data-site="twitter" class="ssb-icon ssb-twitter" onclick="return SocialShareButton.share(this);" title="分享到 Twitter" href="#"></a>-->
+                                <!--<a rel="nofollow " data-site="wechat" class="ssb-icon ssb-wechat" onclick="return SocialShareButton.share(this);" title="分享到 微信" data-wechat-footer="打开微信，点击底部的 “发现”，&lt;br/&gt; 使用 “扫一扫” 即可将网页分享至朋友圈。" href="#"></a>-->
+                                <!--<a rel="nofollow " data-site="facebook" class="ssb-icon ssb-facebook" onclick="return SocialShareButton.share(this);" title="分享到 Facebook" href="#"></a>-->
+                                <!--<a rel="nofollow " data-site="google_plus" class="ssb-icon ssb-google_plus" onclick="return SocialShareButton.share(this);" title="分享到 Google+" href="#"></a>-->
+                                <!--<a rel="nofollow " data-site="weibo" class="ssb-icon ssb-weibo" onclick="return SocialShareButton.share(this);" title="分享到 新浪微博" href="#"></a>-->
+                                <!--<a rel="nofollow " data-site="douban" class="ssb-icon ssb-douban" onclick="return SocialShareButton.share(this);" title="分享到 豆瓣" href="#"></a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<hr />-->
+                        <!--<div class="reply-buttons">-->
+                            <!--<div class="total">-->
+                                <!--共收到 <b>39</b> 条回复-->
+                            <!--</div>-->
+                            <!--<a class="btn btn-success" data-remote="true" href="/hooopo/reward"><i class='fa fa-qrcode'></i> <span>打赏支持</span></a>-->
+                        <!--</div>-->
+                        <!--<hr />-->
+                        <!--<div class="group opts">-->
+
+                        <!--</div>-->
+                        <!--&lt;!&ndash;<a href="#" class="btn btn-default btn-sm btn-block btn-move-page" data-type="bottom"><i class="fa fa-arrow-down"></i></a>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="notify-updated">-->
+                    <!--<a class="update" href="#"><i class="fa fa-bell-o"></i> <b>有新回复！</b>点击这里立即载入</a>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    </div>
+
+</div>
+
+#include("../../assets/html/footer.html")
+<div class="zoom-overlay"></div>
+</body>
+</html>

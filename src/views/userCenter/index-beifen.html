@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #include("../../assets/html/head.html")
+    <title>个人中心</title>
+</head>
+<body class="page-users" data-controller-name="users">
+#include("../../assets/html/header.html")
+
+<div id="main" class="main-container container">
+    #include("../../assets/html/crumbs.html")
+    <div class="row">
+        <div class="sidebar col-md-3" id='sidebar'>
+            <div class="card profile">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="avatar media-left mr-3">
+                            <div class='image'><img class="media-object avatar-96"
+                                                    src="https://ruby-china.org/system/letter_avatars/2/C/187_101_202/192.png"/>
+                            </div>
+                            <div class="level"><span class="badge badge-light role">新手</span></div>
+                        </div>
+                        <div class="media-body">
+                            <div class="item">
+                                captern (captern)<span class="opts pull-right"></span>
+                            </div>
+                            <div class="item number">
+                                第 36660 位会员 / <span title="注册日期">2018-12-17</span>
+                            </div>
+                            <div class="item counts">
+                                <span>0</span> 篇帖子 • <span>2</span> 条回帖
+                            </div>
+                            <div class="item social">
+                                <a target="_blank" rel="nofollow" href=""><i class="fa fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="follow-info row hide-ios">
+                        <div class="col-sm-4 followers" data-login="captern">
+                            <a class="counter" href="javascript:void(0)">0</a>
+                            <a class="text" href="javascript:void(0)">关注者</a>
+                        </div>
+                        <div class="col-sm-4 following">
+                            <a class="counter" href="javascript:void(0)">0</a>
+                            <a class="text" href="javascript:void(0)">正在关注</a>
+                        </div>
+                        <div class="col-sm-4 stars">
+                            <a class="counter" href="javascript:void(0)">1</a>
+                            <a class="text" href="javascript:void(0)">收藏</a>
+                        </div>
+                    </div>
+                    <div class="buttons"></div>
+                </div>
+            </div>
+            <div class="card hidden-mobile" id="user_github_repos">
+                <div class="card-header">GitHub Public Repos</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="title">
+                            <a target="_blank" rel="nofollow" href="">m_vue</a>
+                            <span class="watchers" title="0 Watchers">0</span>
+                        </div>
+                        <p class="desc">一个快速搭建的M站
+                    </li>
+                    <li class="list-group-item">
+                        <div class="title">
+                            <a target="_blank" rel="nofollow" href="">react-blog</a>
+                            <span class="watchers" title="0 Watchers">0</span>
+                        </div>
+                        <p class="desc">
+
+                    </li>
+                </ul>
+                <div class="card-footer more">
+                    <a target="_blank" rel="nofollow" href="">More on GitHub</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-9 tabbable">
+            <ul class="users-menu nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" href="#topics" data-toggle="tab">话题</a></li>
+                <li class="nav-item"><a class="nav-link" href="#replies" data-toggle="tab">回帖</a></li>
+                <li class="nav-item"><a class="nav-link" href="#favorites" data-toggle="tab">收藏</a></li>
+                <li class="nav-item"><a class="nav-link" href="#following" data-toggle="tab">正在关注</a></li>
+                <li class="nav-item"><a class="nav-link" href="#followers" data-toggle="tab">关注者</a></li>
+            </ul>
+            <div class="card tab-content">
+                <div class="tab-pane active" id="topics">
+                    <div class="card"></div>
+                </div>
+                <div class="tab-pane" id="replies">
+                    <div class="card">
+                        <ul class="list-group list-group-flush recent-replies">
+                            <li class="list-group-item">
+                                <div class="title">
+                                    <a href="/topics/37815">It&#39;s never too late to learn Postgres</a>
+                                    <span class="info">at <abbr class="timeago" title="2018-12-18T17:20:57+08:00">2018年12月18日</abbr></span>
+                                </div>
+                                <div class="body markdown">
+                                    <p>挺不错的文章，学到了很多东西，我什么时候才能发帖子啊</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="title">
+                                    <a href="/topics/37815">It&#39;s never too late to learn Postgres</a>
+                                    <span class="info">at <abbr class="timeago" title="2018-12-18T17:12:22+08:00">2018年12月18日</abbr></span>
+                                </div>
+                                <div class="body markdown">
+                                    <p>挺不错的文章，学到了很多东西</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="title">
+                                    <a href="/topics/37845">Nginx 进程和信号</a>
+                                    <span class="info">at <abbr class="timeago" title="2018-12-18T16:58:21+08:00">2018年12月18日</abbr></span>
+                                </div>
+                                <div class="body markdown">
+                                    <p>不知道什么时候我才能发帖啊。好难受</p>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="title">
+                                    <a href="/topics/37868">图解 Unicorn 工作原理</a>
+                                    <span class="info">at <abbr class="timeago" title="2018-12-17T19:18:33+08:00">2018年12月17日</abbr></span>
+                                </div>
+                                <div class="body markdown">
+                                    <p><img title=":grinning:" alt="😀" src="https://twemoji.b0.upaiyun.com/2/svg/1f600.svg"
+                                            class="twemoji"> 挺好的帖子，学到了很多</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-pane" id="favorites">
+                    <div class="card">
+                        <table class="node-topics table">
+                            <tr class="head">
+                                <td class="opts">节点</td>
+                                <td class="title">标题</td>
+                            </tr>
+                            <tr class="topic odd">
+                                <td><a class="node" href="/topics/node18">Nginx</a></td>
+                                <td class="title"><a title="Nginx 进程和信号" href="/topics/37845">Nginx 进程和信号</a></td>
+                            </tr>
+                            <tr class="topic ">
+                                <td><a class="node" href="/topics/node1">Ruby</a></td>
+                                <td class="title"><a title="ruby 如何 连接 Caché 数据库啊？···有大神来讲解一下吗" href="/topics/37913">ruby 如何
+                                    连接 Caché 数据库啊？···有大神来讲解一下吗</a></td>
+                            </tr>
+                            <tr class="topic odd">
+                                <td><a class="node" href="/topics/node26">分享</a></td>
+                                <td class="title"><a title="图解 Unicorn 工作原理" href="/topics/37868">图解 Unicorn 工作原理</a></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="following">
+                    <div class="card"></div>
+                </div>
+                <div class="tab-pane" id="followers">
+                    <div class="card"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+#include("../../assets/html/footer.html")
+<div class="zoom-overlay"></div>
+</body>
+</html>

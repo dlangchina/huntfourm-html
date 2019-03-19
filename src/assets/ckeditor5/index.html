@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--富文本编辑器，将静态资源放入公共文件中，使用时引入js，并且将div 的 id 对应起来即可-->
+<!--参考链接    https://ckeditor.com/-->
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+</head>
+<body>
+
+<div class="centered">
+    <div id="editor">
+        <h2>The three greatest things you learn from traveling</h2>
+    </div>
+</div>
+<script src="ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            ckfinder: {
+                uploadUrl: '/'
+                // 为图片上传地址
+            },
+            toolbar: ['heading', '|', 'bold', 'imageUpload', 'italic', 'link', 'imageStyle:full', 'imageStyle:side'],
+            // removePlugins: [ 'Heading', 'Link' ],
+            heading: {
+                options: [
+                    {model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph'},
+                    {model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1'},
+                    {model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2'}
+                ]
+            }
+        })
+        .then(editor => {
+            window.editor = editor;
+
+
+            var result = editor.getData();
+            console.log(result)
+        })
+        .catch(err => {
+            console.error(err.stack);
+        });
+</script>
+
+</body>
+</html>
+
+<!--"undo", //撤销-->
+<!--"redo", //不撤销-->
+<!--"bold", //加粗-->
+<!--"italic", //斜体-->
+<!--"blockQuote",  //块引用-->
+<!--"imageTextAlternative", //用于图片加载不出来时替换显示的文字-->
+<!--"imageUpload", // 插入图片-->
+<!--"heading", // 标题-->
+<!--"imageStyle:full",  //图片与上下文组合方式：图片占一整行-->
+<!--"imageStyle:side",  //图片与上下文组合方式：图片在文字的旁边-->
+<!--"link", // 链接-->
+<!--"numberedList",   //有序列表-->
+<!--"bulletedList"    //无序列表-->
+

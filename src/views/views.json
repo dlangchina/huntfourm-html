@@ -1,0 +1,34 @@
+[
+    {
+        "url": "index"
+    },
+    {
+        "url": "topics"
+    },
+    {
+        "url": "favorites"
+    },
+    {
+        "url": "topicDetail"
+    },
+    {
+        "url": "userCenter"
+    },
+    {
+        "url": "setting"
+    },
+    {
+        "url": "login"
+    },
+    {
+        "url": "register"
+    },
+    {
+        "url": "topicNew"
+    },
+    {
+        "url": "wiki"
+    }
+]
+
+
