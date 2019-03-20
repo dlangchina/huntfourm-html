@@ -44,7 +44,7 @@ const LazyLoadImage = () => {
     }
 }
 
-const vditor = new Vditor('editor', {
+const vditor = new Vditor('vditor', {
     counter: 1000,
     height: 300,
     editorName: 'vditor',
@@ -66,95 +66,16 @@ const vditor = new Vditor('editor', {
         },
     },
 })
-
-window.vditorTest = new Vditor('vditorTest', {
-    cache: true,
-    height: 200,
-    width: 500,
-    counter: 100,
-    resize: {
-        enable: true,
-        position: 'top',
-        after: height => {
-            console.log(`after resize, height change: ${height}`)
-        },
-    },
-    placeholder: 'say sth...',
-    lang: 'en_US',
-    preview: {
-        url: '/api/markdown',
-        parse: (element) => {
-            console.log(element)
-            LazyLoadImage()
-        },
-    },
-    hint: {
-        emojiPath: 'https://static.hacpai.com/emoji/graphics',
-        emojiTail: '<a href="https://hacpai.com/settings/function" target="_blank">设置常用表情</a>',
-        emoji: {
-            '+1': '👍',
-            '-1': '👎',
-            'trollface': '/src/assets/emoji/trollface.png',
-            'huaji': '/src/assets/emoji/huaji.gif',
-        },
-        at: (key) => {
-            console.log(`atUser: ${key}`)
-            return [
-                {
-                    value: '@88250',
-                    html: '<img src="https://img.hacpai.com/avatar/1353745196354_1535379434567.png?imageView2/1/w/52/h/52/interlace/0/q"> 88250',
-                },
-                {
-                    value: '@Vanessa',
-                    html: '<img src="https://img.hacpai.com/avatar/1353745196354_1535379434567.png?imageView2/1/w/52/h/52/interlace/0/q"> Vanessa',
-                }]
-        },
-    },
-    classes: {
-        preview: 'content-reset',
-    },
-    focus: (val) => {
-        console.log(`focus value: ${val}`)
-        console.log(
-            `focus cursor position:${JSON.stringify(vditor.getCursorPosition())}`)
-    },
-    blur: (val) => {
-        console.log(`blur: ${val}`)
-    },
-    input: (val, mdElement) => {
-        console.log('change:' + val, mdElement)
-    },
-    esc: (val) => {
-        console.log(`esc: ${val}`)
-    },
-    ctrlEnter: (val) => {
-        console.log(`ctrlEnter: ${val}`)
-    },
-    select: (val) => {
-        console.log(`select: ${val}`)
-    },
-    upload: {
-        accept: 'image/*,.pdf',
-        token: 'test',
-        url: '/api/upload/editor',
-        linkToImgUrl: '/api/upload/fetch',
-        filename: name => {
-            // ? \ / : | < > * [ ] white to -
-            return name.replace(/\?|\\|\/|:|\||<|>|\*|\[|\]|\s+/g, '-')
-        },
-    },
-    toolbar: [
-        {
-            name: 'preview',
-            tipPosition: 'ne',
-        },
-        'br',
-        {
-            name: 'emoji',
-        },
-        'strike',
-    ],
+vditor.focus(ews=>{
+    console.log(ews)
+    console.log('asdsad')
 })
+// $('#reply-button').click(function () {
+//     let result = vditor.focus();
+//
+//     console.log(result);
+//     alert(result);
+// });
 
 
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
