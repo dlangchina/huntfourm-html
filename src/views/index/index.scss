@@ -1,16 +1,22 @@
 @import "../../assets/css/vars";
 
-#home_index { line-height:160%; }
+#home_index {
+    line-height: 160%;
+}
 
 //头部的几个导航按钮
-a{
+a {
     text-decoration: none;
 }
+
 a:link,
-a:visited{
+a:visited {
     color: #000000;
 }
-a:hover { color: #666; }
+
+a:hover {
+    color: #666;
+}
 
 .home-icons {
     .item {
@@ -23,19 +29,33 @@ a:hover { color: #666; }
 
         .icon {
             display: block;
-            a { display: block; padding: 20px 15px; }
-            .fa { font-size: 60px; }
+            a {
+                display: block;
+                padding: 20px 15px;
+            }
+            .fa {
+                font-size: 60px;
+            }
         }
         .text {
             display: block;
             text-align: left;
             background: #F5F5F5;
             border-top: 1px solid #E9E9E9;
-            font-size: 14px; font-weight:bold;
+            font-size: 14px;
+            font-weight: bold;
 
-            a { display:block; color: #666; padding: 6px 15px;  }
-            a:hover { text-decoration: none; }
-            .fa { margin-top: 3px; }
+            a {
+                display: block;
+                color: #666;
+                padding: 6px 15px;
+            }
+            a:hover {
+                text-decoration: none;
+            }
+            .fa {
+                margin-top: 3px;
+            }
             border-radius: 0 0 3px 3px;
         }
         &:hover {
@@ -44,22 +64,30 @@ a:hover { color: #666; }
     }
     .item1 {
         .icon {
-            .fa { color: lighten($red, 10%); }
+            .fa {
+                color: lighten($red, 10%);
+            }
         }
     }
     .item3 {
         .icon {
-            .fa { color: lighten($blue, 10%); }
+            .fa {
+                color: lighten($blue, 10%);
+            }
         }
     }
     .item2 {
         .icon {
-            .fa { color: lighten($yellow, 10%); }
+            .fa {
+                color: lighten($yellow, 10%);
+            }
         }
     }
     .item4 {
         .icon {
-            .fa { color: lighten($green, 10%); }
+            .fa {
+                color: lighten($green, 10%);
+            }
         }
     }
 
@@ -73,62 +101,78 @@ h2 {
     text-align: center;
 }
 
-#last_topics { float:left; width:450px; }
-#hot_topics { float:right; width:450px; }
+#last_topics {
+    float: left;
+    width: 450px;
+}
+
+#hot_topics {
+    float: right;
+    width: 450px;
+}
 
 .node-topics {
-    margin-bottom:0px;
-    .head { display:none; }
+    margin-bottom: 0px;
+    .head {
+        display: none;
+    }
 }
+
 .location-list {
     .name {
-        a { color: #666; margin: 6px; display: inline-block; }
+        a {
+            color: #666;
+            margin: 6px;
+            display: inline-block;
+        }
     }
 }
 
-.media-right{
+.media-right {
 
 }
+
 @media (max-width: 767px) {
-    .crumbs-area{
-        margin-left: -15px!important;
+    .crumbs-area {
+        margin-left: -15px !important;
     }
-    .col-md-9{
-        padding-left: 0!important;
+    .col-md-9 {
+        padding-left: 0 !important;
     }
-    .topics{
-        .topic{
-            .media{
-                &.sidebar{
+    .topics {
+        .topic {
+            .media {
+                &.sidebar {
                     display: none;
                 }
             }
         }
     }
-    .ipsDataItem_stats{
+    .ipsDataItem_stats {
         display: none;
     }
 }
+
 .topics {
     .topic {
         padding: 10px 0;
-        .media{
+        .media {
             padding-right: 0;
-            align-items:center;
-            .ipsItemStatus-icon{
+            align-items: center;
+            .ipsItemStatus-icon {
                 padding: 0 8px;
             }
-            .media-object{
+            .media-object {
                 margin-right: 10px;
                 vertical-align: middle;
             }
-            .media-body{
-                a{
+            .media-body {
+                a {
                     text-decoration: none;
                 }
-                .title{
-                    height: 25px!important;
-                    overflow: hidden!important;
+                .title {
+                    height: 25px !important;
+                    overflow: hidden !important;
                 }
             }
         }
@@ -136,50 +180,51 @@ h2 {
             height: 30px;
             overflow: hidden;
         }
-        .ipsDataItem_stats{
+        .ipsDataItem_stats {
             width: 100px;
             a:link,
             a:hover,
-            a:visited{
+            a:visited {
                 background: white;
             }
-            .ipsDataItem_stats_number{
-                display: block!important;
-                color: #000!important;
-                font-size: 22px!important;
-                font-weight: 300!important;
-                line-height: 1.3!important;
-                text-align: right!important;
-                padding: 0!important;
-                letter-spacing: 0!important;
+            .ipsDataItem_stats_number {
+                display: block !important;
+                color: #000 !important;
+                font-size: 22px !important;
+                font-weight: 300 !important;
+                line-height: 1.3 !important;
+                text-align: right !important;
+                padding: 0 !important;
+                letter-spacing: 0 !important;
             }
-            .ipsDataItem_stats_type{
-                color: #8d9aa6!important;
-                padding: 0!important;
+            .ipsDataItem_stats_type {
+                color: #8d9aa6 !important;
+                padding: 0 !important;
             }
         }
-        .count{
+        .count {
             padding-top: 0;
         }
-        .sidebar{
+        .sidebar {
             padding-left: -5px;
             padding-right: 10px;
-            .avatar{
+            .avatar {
                 margin: 0;
                 padding: 0;
             }
-            .media-body{
-                .media-heading{
-                    a{
+            .media-body {
+                .media-heading {
+                    a {
                         display: inline-block;
-                        height: 25px!important;
-                        overflow: hidden!important;
+                        height: 25px !important;
+                        overflow: hidden !important;
                     }
                 }
             }
         }
     }
 }
+
 //右侧悬浮
 .hot-right {
     .card {
@@ -189,14 +234,14 @@ h2 {
     .card-body {
         word-break: break-all;
     }
-    .topic{
+    .topic {
         align-items: center;
         padding: 10px 15px;
-        .media-body{
-            .media-heading{
+        .media-body {
+            .media-heading {
                 overflow: visible;
                 height: auto;
-                a{
+                a {
                     padding-top: 8px;
                     display: inline-block;
                     font-size: 14px;
@@ -206,12 +251,23 @@ h2 {
         }
     }
 }
+
 //右侧头像
-.dropdown-avatar{
-    .nav-link{
-        padding: 12px 5px!important;
+.dropdown-avatar {
+    .nav-link {
+        padding: 12px 5px !important;
     }
 }
-.footer{
-    a:hover { color: #007bff; }
+
+.footer {
+    color: #586069 !important;
+    a:hover {
+        color: #007bff;
+    }
+    a:visited {
+        color: #666;
+    }
+    a:link {
+        color: #666;
+    }
 }
