@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    #include("../../assets/html/head.html")
+    <title>帖子详情</title>
+</head>
+<body class="page-topics" data-controller-name="topics">
+#include("../../assets/html/header.html")
+
+<div id="main" class="main-container container">
+    #include("../../assets/html/crumbs.html")
+    <div class="row">
+        <div class="col-md-12">
+            <div class="topic-detail card">
+                <div class="card-header media clearfix">
+                    <!--1 楼，发帖人数据-->
+                    <div class="media-body">
+                        <h1 class="media-heading">
+                            <a class="node" href="/topics/node12">数据库</a>
+                            <span class="title">It&#39;s never too late to learn Postgres</span>
+                        </h1>
+                        <div class="info">
+                            <a data-author="true" class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a>
+                            <span class="hidden-mobile"></span>·
+                            <abbr class="timeago" title="2018-11-24T03:15:19+08:00">2018年11月24日</abbr>
+                            <span class="hidden-mobile">· 最后由
+                                <a class="user-name" data-name="hooopo" href="/hooopo">hooopo</a>
+                                回复于
+                                <abbr class="timeago" title="2018-12-13T18:12:58+08:00">2018年12月13日</abbr>
+                            </span> · 3399 次阅读
+                        </div>
+                    </div>
+                    <div class="avatar media-right">
+                        <a title="hooopo (Hooopo)" href="/hooopo"><img class="media-object avatar-48"
+                                                                       src="https://l.ruby-china.com/user/avatar/8.jpg!md"/></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="replies" class="card" data-last-floor="40">
+                <div class="items card-body">
+                    <div class="reply" data-id="348836" id="reply2">
+                        <div id="reply-348836" data-floor="2">
+                            <div class="avatar"><a title="coderliu (刘二狗)" href="/coderliu"><img
+                                class="media-object avatar-48" src="https://l.ruby-china.com/user/avatar/23873.jpg!md"/></a>
+                            </div>
+                            <div class="infos" style="min-height: 100px">
+                                <div class="info">
+                                    <span class="name"><a class="user-name" data-name="刘二狗"
+                                                          href="/coderliu">coderliu</a></span>
+                                    <span class="sub-info">
+                                        <span class='floor'>#2</span> · <a class="time" href="#reply-348836">
+                                        <abbr class="timeago" title="2018-11-24T09:10:04+08:00">2018年11月24日</abbr></a>
+                                    </span>
+                                </div>
+                                <div class="markdown">
+                                    <p>炮神可以分享一下你的 PG 学习路线吗？</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--点赞和收藏区域-->
+                        <div class="card-footer clearfix">
+                            <div class="opts">
+                                <a title="赞" data-count="57" data-state="deactive" data-type="Topic" data-id="37815"
+                                   class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>57 个赞</span></a>
+                                <a data-id="37815" class="follow" href="#"><i class="fa fa-eye"></i> 关注</a>
+                                <a title="收藏" class="bookmark " data-id="37815" href="#"><i class="fa fa-bookmark"></i>
+                                    收藏</a>
+                                <span class="pull-right opts"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!--回复3 楼-->
+                    <div class="reply" data-id="349168" id="reply32">
+                        <div id="reply-349168" data-floor="32">
+                            <div class="avatar"><a title="hooopo (Hooopo)" href="/hooopo">
+                                <img class="media-object avatar-48"
+                                     src="https://l.ruby-china.com/user/avatar/8.jpg!md"/></a>
+                            </div>
+                            <div class="infos">
+                                <div class="info">
+                                    <span class="name"><a class="user-name" data-name="Hooopo" href="/hooopo">hooopo</a></span>
+                                    <span class="sub-info">
+                                        <span class='floor'>#3</span> ·
+                                        <a class="time" href="#reply-349168">
+                                            <abbr class="timeago" title="2018-12-07T12:01:40+08:00">2018年12月07日</abbr>
+                                        </a>
+                                    </span>
+                                </div>
+                                <!--<div class="reply-to-block" data-reply-to-id="349099">-->
+                                <!--<div class="info">-->
+                                <!--对-->
+                                <!--<a data-remote="true" href="/topics/37815/replies/349168/reply_to">-->
+                                <!--<img class="media-object avatar-16"-->
+                                <!--src="https://l.ruby-china.com/user/avatar/3347.jpg!xs"/><span-->
+                                <!--class="user-name">ted</span>-->
+                                <!--<span class='reply-floor'></span>-->
+                                <!--</a> 回复-->
+                                <!--</div>-->
+                                <!--</div>-->
+
+                                <div class="markdown">
+                                    <p>最近在写，一个大概的提纲：
+                                        <img src="https://l.ruby-china.com/photo/2018/f8fc11f4-c6b3-48a9-8cb1-8544b9643a2e.png!large" title="" alt="">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--点赞和收藏区域-->
+                        <div class="card-footer clearfix">
+                            <div class="opts">
+                                <a title="赞" data-count="57" data-state="deactive" data-type="Topic" data-id="37815"
+                                   class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>57 个赞</span></a>
+                                <a data-id="37815" class="follow" href="#"><i class="fa fa-eye"></i> 关注</a>
+                                <a title="收藏" class="bookmark " data-id="37815" href="#"><i class="fa fa-bookmark"></i>
+                                    收藏</a>
+                                <span class="pull-right opts"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reply" data-id="349286" id="reply39">
+                        <div id="reply-349286" data-floor="39">
+                            <div class="avatar"><a title="jiang_plus (jiang-plus)" href="/jiang_plus">
+                                <img class="media-object avatar-48"
+                                     src="https://ruby-china.org/system/letter_avatars/2/J/82_188_137/96.png"/></a>
+                            </div>
+                            <div class="infos">
+                                <div class="info">
+                                    <span class="name">
+                                        <a class="user-name" data-name="jiang-plus" href="/jiang_plus">jiang_plus</a>
+                                    </span>
+                                    <span class="sub-info">
+                                        <span class='floor'>#39</span> ·
+                                        <a class="time" href="#reply-349286">
+                                            <abbr class="timeago" title="2018-12-13T14:19:05+08:00">2018年12月13日</abbr>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="markdown">
+                                    <p>另外推荐一下使用 google spanner 模型并兼容 pg 语法的 yugabyte 数据库：</p>
+                                    <p><a href="https://yugabyte.com" rel="nofollow" target="_blank">https://yugabyte.com</a>
+                                    </p>
+                                    <p>以及连接 pg 和 elasticsearch 的 zombodb：</p>
+                                    <p><a href="https://github.com/zombodb/zombodb" rel="nofollow" target="_blank">https://github.com/zombodb/zombodb</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--点赞和收藏区域-->
+                        <div class="card-footer clearfix">
+                            <div class="opts">
+                                <a title="赞" data-count="57" data-state="deactive" data-type="Topic" data-id="37815"
+                                   class="likeable deactive" href="#"><i class='fa fa-heart'></i> <span>57 个赞</span></a>
+                                <a data-id="37815" class="follow" href="#"><i class="fa fa-eye"></i> 关注</a>
+                                <a title="收藏" class="bookmark " data-id="37815" href="#"><i class="fa fa-bookmark"></i>
+                                    收藏</a>
+                                <span class="pull-right opts"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reply" class="card">
+                <div class="card-header hide-ios">回帖</div>
+                <div class="card-body">
+                    <div id="editor">
+                        <p>This is the editor content.</p>
+                    </div>
+                    <!--<div class="editor-toolbar clearfix">
+                        <div class="reply-to pull-right" style="display:none;">
+                            <i class="fa fa-mail-reply" title="回复"></i>
+                            <a href="#" class="user"></a>
+                            <a href="#" class="close"><i class="fa fa-close"></i></a>
+                        </div>
+                        <div class="opts">
+                            <a href="#" class="nav-link pickup-emoji"><i class="fa fa-smile-o"></i></a>
+                            <span class="dropdown" id="dropdown-insert-codes">
+      <a href="#editor-toolbar-insert-code" class="nav-link dropdown-toggle" data-toggle="dropdown" title="插入代码"><i class="fa fa-code"></i></a>
+      <div class="dropdown-menu insert-codes" aria-labelledby="dropdown-insert-codes">
+        <a class="dropdown-item" data-lang="ruby" href="#">Ruby</a><a class="dropdown-item" data-lang="erb" href="#">HTML / ERB</a><a class="dropdown-item" data-lang="scss" href="#">CSS / SCSS</a><a class="dropdown-item" data-lang="js" href="#">JavaScript</a><a class="dropdown-item" data-lang="yml" href="#">YAML</i></a><a class="dropdown-item" data-lang="coffee" href="#">CoffeeScript</a><a class="dropdown-item" data-lang="conf" href="#">Nginx / Redis <i>(.conf)</i></a><a class="dropdown-item" data-lang="python" href="#">Python</a><a class="dropdown-item" data-lang="php" href="#">PHP</a><a class="dropdown-item" data-lang="java" href="#">Java</a><a class="dropdown-item" data-lang="erlang" href="#">Erlang</a><a class="dropdown-item" data-lang="shell" href="#">Shell / Bash</a>
+      </div>
+    </span>
+                            <a id="editor-upload-image" title="上传图片" class="nav-link" href="#"><i class='fa fa-image'></i> </a>
+                            <a href="#" class="nav-link preview">预览</a>
+                        </div>
+                    </div>
+                    <form id="new_reply" action="/topics/37815/replies" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="TkjiXeCeJQaYgEnUVAmrtvpCN4jBAcCSn58zHk6UyZyqN4LeYBsxOhi/8fI22jDIsQ1Ad7lL9I8IXKIoE7ymUg==" />
+
+                        <div class="form-group">
+    <textarea class="topic-editor form-control" rows="4" tabindex="1" name="reply[body]" id="reply_body">
+</textarea>
+                        </div>
+                        <input type="hidden" name="reply[reply_to_id]" id="reply_reply_to_id" />
+                        <div class="submit-buttons">
+                            <button type="submit" id="reply-button" class="btn btn-primary" tabindex="2", data-disable-with='提交回复'>提交回复</button>
+                            <span class="help-inline" style="padding-left: 5px;" title="或者 Ctrl + Enter"><kbd>Command</kbd> + <kbd>Enter</kbd></span>
+
+                            <div class="pull-right"><a href="/markdown" target="_blank">排版说明</a></div>
+                        </div>
+                    </form>-->
+                    <div class="card"></div>
+                    <div class="submit-buttons">
+                        <button type="submit" id="reply-button" class="btn btn-primary" tabindex="2" ,
+                                data-disable-with='提交回复'>提交回复
+                        </button>
+                        <!--<span class="help-inline" style="padding-left: 5px;" title="或者 Ctrl + Enter"><kbd>Command</kbd> + <kbd>Enter</kbd></span>-->
+                        <!--<div class="pull-right"><a href="/markdown" target="_blank">排版说明</a></div>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">相关话题</div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="/topics/30023">Ruby ETL 工具漫谈</a></li>
+                    <li class="list-group-item"><a href="/topics/37192">Postgresql 插入一亿条数据，有快速的方法吗？</a></li>
+                    <li class="list-group-item"><a href="/topics/31640">[译] Rails 数据库最佳实践</a></li>
+                    <li class="list-group-item"><a href="/topics/32490">用 PHP 做项目都是用的 MySQL，现在转 Rails 有必要切到 PostgreSQL
+                        派？</a></li>
+                    <li class="list-group-item"><a href="/topics/25116">Data Warehouse Schema Design</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+#include("../../assets/html/footer.html")
+<div class="zoom-overlay"></div>
+</body>
+</html>

@@ -12,6 +12,9 @@
         "url": "topicDetail"
     },
     {
+        "url": "topicDetailNew"
+    },
+    {
         "url": "userCenter"
     },
     {
