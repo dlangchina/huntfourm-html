@@ -10,7 +10,12 @@
 <div class="centered">
     <div id="editor">
         <h2>The three greatest things you learn from traveling</h2>
+        <h2>The three greatest things you learn from traveling</h2>
+        <h2>The three greatest things you learn from traveling</h2>
+        <h2>The three greatest things you learn from traveling</h2>
+        <p>cadsmklmcadlsmlkcsm</p>
     </div>
+    <div id="post">sadasdsadas</div>
 </div>
 <script src="ckeditor.js"></script>
 
@@ -33,14 +38,28 @@
         })
         .then(editor => {
             window.editor = editor;
+            // var result = editor.getData();
+            // document.querySelector('#editor').click(function () {
+            //     alert('121')
+            //     alert(result)
+            // })
 
-
-            var result = editor.getData();
-            console.log(result)
+            document.getElementById('post').onclick = function () {
+                // console.log(result)
+                alert('12')
+                var result = window.editor.getData()
+                console.log(result)
+            }
         })
         .catch(err => {
             console.error(err.stack);
         });
+    // document.getElementById('post').onclick = function () {
+    //     var result = window.editor.getData()
+    //     alert('1212')
+    //     alert(result)
+    //     console.log(result)
+    // }
 </script>
 
 </body>
