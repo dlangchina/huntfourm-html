@@ -176,6 +176,13 @@ h2 {
                 }
             }
         }
+        .ipsItemStatus-icon{
+            .media-object{
+                &.avatar-48{
+                    border-radius: 0;
+                }
+            }
+        }
         .title {
             height: 30px;
             overflow: hidden;
@@ -217,6 +224,7 @@ h2 {
                     a {
                         display: inline-block;
                         height: 25px !important;
+                        font-size: 14px!important;
                         overflow: hidden !important;
                     }
                 }
