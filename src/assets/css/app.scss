@@ -62,6 +62,10 @@ textarea,
     }
 }
 
+a{
+    color: #2275DA;
+}
+
 .alert-block {
     ul {
         margin-bottom: 0;
@@ -774,6 +778,7 @@ img.emoji {
             display: none;
         }
         li.prev,
+        li.active,
         li.next {
             float: left;
             display: block;

@@ -33,8 +33,10 @@ dirJSON.forEach(page => {
 if (isProd) {
     plugins.push(
         new MiniCssExtractPlugin({
-            filename: 'css/' + (isProd ? '[name].[contenthash:8].min.css' : '[name].css'),
-            chunkFilename: 'css/' + (isProd ? '[name].chunk.[contenthash:8].min.css' : '[name].chunk.css'),
+            // filename: 'css/' + (isProd ? '[name].[contenthash:8].min.css' : '[name].css'),
+            // chunkFilename: 'css/' + (isProd ? '[name].chunk.[contenthash:8].min.css' : '[name].chunk.css'),
+            filename: 'css/' + (isProd ? '[name].min.css' : '[name].css'),
+            chunkFilename: 'css/' + (isProd ? '[name].min.css' : '[name].chunk.css'),
         })
     );
 }
@@ -44,8 +46,10 @@ module.exports = {
     output: {
         publicPath: isProd ? './' : '',
         path: path.resolve(__dirname, './dist'),
-        filename: 'js/' + (isProd ? '[name].[chunkhash].min.js' : '[name].js'),
-        chunkFilename: 'js/' + (isProd ? '[name].chunk.[chunkhash].min.js' : '[name].chunk.js'),
+        // filename: 'js/' + (isProd ? '[name].[chunkhash].min.js' : '[name].js'),
+        // chunkFilename: 'js/' + (isProd ? '[name].chunk.[chunkhash].min.js' : '[name].chunk.js'),
+        filename: 'js/' + (isProd ? '[name].min.js' : '[name].js'),
+        chunkFilename: 'js/' + (isProd ? '[name].min.js' : '[name].chunk.js'),
     },
     module: {
         rules: [

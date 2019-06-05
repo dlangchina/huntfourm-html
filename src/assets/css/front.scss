@@ -25,7 +25,7 @@
             float: left;
             text-align: left;
             a:link, a:visited {
-                color: #333;
+                //color: #333;
             }
         }
     }
@@ -224,7 +224,7 @@
 
                     &:hover {
                         border: 0;
-                        color: #222;
+                        //color: #222;
                     }
                 }
 
@@ -285,7 +285,7 @@
             margin-bottom: 0;
             a:link,
             a:visited {
-                color: #222;
+                //color: #222;
                 font-weight: 400;
                 line-height: 30px;
                 word-break: break-all;
@@ -483,7 +483,7 @@
             }
             a:link, a:hover, a:visited {
                 text-decoration: none;
-                color: $primary;
+                //color: $primary;
             }
             a:hover {
                 background: rgba(0, 0, 0, 0.03);
