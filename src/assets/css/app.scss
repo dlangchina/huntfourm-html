@@ -772,6 +772,12 @@ img.emoji {
         }
     }
 
+    .clearfix{
+        padding: 10px 10px 0;
+        &.top{
+
+        }
+    }
     .pagination {
         display: block;
         li {
@@ -783,7 +789,7 @@ img.emoji {
             float: left;
             display: block;
             a {
-                border-radius: 20px !important;
+                //border-radius: 20px !important;
             }
         }
         li.next {
